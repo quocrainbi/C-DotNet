@@ -1,0 +1,14 @@
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\bin\Debug\ThiDotNet.exe.config
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\bin\Debug\ThiDotNet.exe
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\bin\Debug\ThiDotNet.pdb
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.csproj.AssemblyReference.cache
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.csproj.SuggestedBindingRedirects.cache
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.Properties.Resources.resources
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.csproj.GenerateResource.cache
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.csproj.CoreCompileInputs.cache
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.exe
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.pdb
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.fLogin.resources
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.View.FTableManager.resources
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.View.fAccountProfile.resources
+C:\Users\Bao Quoc\source\repos\ThiDotNet\ThiDotNet\obj\Debug\ThiDotNet.View.fAdmin.resources
