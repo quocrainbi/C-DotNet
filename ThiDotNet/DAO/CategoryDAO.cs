@@ -36,5 +36,78 @@ namespace ThiDotNet.DAO
 
             return list;
         }
+
+        //PPPPPPPPPP
+        public Category GetCategoryByID(int id)
+        {
+            Category category = null;
+
+            string query = "select * from FoodCategory where id = " + id;
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                category = new Category(item);
+                return category;
+            }
+
+            return category;
+        }
+
+        public List<Category> GetCategoryList()
+        {
+            List<Category> list = new List<Category>();
+
+            string query = "select * from FoodCategory";
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Category ctg = new Category(item);
+                list.Add(ctg);
+            }
+
+            return list;
+        }
+
+        public bool InsertCategory(string name)
+        {
+            string query = string.Format("INSERT dbo.FoodCategory ( name )VALUES ( N'{0}' )", name);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public bool UpdateCategory(int idCtg, string name)
+        {
+            string query = string.Format("UPDATE dbo.FoodCategory SET name = N'{0}' WHERE id = {1}", name, idCtg);
+
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+        }
+        public bool DeleteCategory(int idctg)
+        {
+            string query = string.Format("Delete FoodCategory where id = {0}", idctg);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+            return result > 0;
+        }
+        public List<Category> SearchCategoryByName(string name)
+        {
+
+            List<Category> list = new List<Category>();
+
+            string query = string.Format("SELECT * FROM dbo.FoodCategory WHERE dbo.fuConvertToUnsign1(name) LIKE N'%' + dbo.fuConvertToUnsign1(N'{0}') + '%'", name);
+
+            DataTable data = DataProvider.Instance.ExecuteQuery(query);
+
+            foreach (DataRow item in data.Rows)
+            {
+                Category ctg = new Category(item);
+                list.Add(ctg);
+            }
+
+            return list;
+        }
     }
 }

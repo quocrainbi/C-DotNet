@@ -26,7 +26,7 @@ namespace ThiDotNet.View
             this.Account = account;
             InitializeComponent();
             LoadTable();
-            LoadCategoryFood(); 
+            LoadCategoryFood();
         }
         #region Method
         void LoadTable()
@@ -60,7 +60,7 @@ namespace ThiDotNet.View
             float totalprice = 0;
             lvBill.Items.Clear();
             List<Menu1> ListMenu = Menu1DAO.Instance.GetListMenuByTable(id);
-            foreach(Menu1 item in ListMenu)
+            foreach (Menu1 item in ListMenu)
             {
                 ListViewItem lsvItem = new ListViewItem(item.FoodName.ToString());
                 lsvItem.SubItems.Add(item.Count.ToString());
@@ -101,20 +101,43 @@ namespace ThiDotNet.View
         {
             if (this.Account.type == 0)
             {
-                MessageBox.Show("Bạn không có chức năng này"+Environment.NewLine+"Vui lòng liên hệ với quản trị viên!", "Thông báo ");
+                MessageBox.Show("Bạn không có chức năng này" + Environment.NewLine + "Vui lòng liên hệ với quản trị viên!", "Thông báo ");
             }
             else
             {
                 fAdmin f = new fAdmin();
                 this.Hide();
+                f.InsertFood += f_InsertFood;
+                f.DeleteFood += f_DeleteFood;
+                f.UpdateFood += f_UpdateFood;
                 f.ShowDialog();
                 this.Show();
             }
         }
 
+        private void f_UpdateFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lvBill.Tag != null) ShowBill((lvBill.Tag as Table).ID);
+
+        }
+
+        private void f_DeleteFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lvBill.Tag != null) ShowBill((lvBill.Tag as Table).ID);
+            LoadTable();
+        }
+
+        private void f_InsertFood(object sender, EventArgs e)
+        {
+            LoadFoodListByCategoryID((cbCategory.SelectedItem as Category).ID);
+            if (lvBill.Tag != null) ShowBill((lvBill.Tag as Table).ID);
+        }
+
         private void bnt_Click(object sender, EventArgs e)
         {
-   
+
             int TableId = ((sender as Button).Tag as Table).ID;
             lvBill.Tag = (sender as Button).Tag;
             ShowBill(TableId);
@@ -167,7 +190,7 @@ namespace ThiDotNet.View
             {
                 BillInfoDAO.Instance.InsertBillInfo(idBill, foodID, count);
             }
-            if (TableDAO.Instance.UpdateStatusTable(table.ID,"Có Người"))LoadTable() ;
+            if (TableDAO.Instance.UpdateStatusTable(table.ID, "Có Người")) LoadTable();
             ShowBill(table.ID);
 
         }
@@ -179,7 +202,7 @@ namespace ThiDotNet.View
             int idBill = BillDAO.Instance.GetUncheckBillIDByTableID(table.ID);
             int discount = (int)nmDisCount.Value;
 
-            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0])*1000;
+            double totalPrice = Convert.ToDouble(txbTotalPrice.Text.Split(',')[0]) * 1000;
             double finalTotalPrice = totalPrice - (totalPrice / 100) * discount;
 
             if (idBill != -1)
